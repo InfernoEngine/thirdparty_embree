@@ -41,7 +41,27 @@ namespace embree
 /// Unix Platform
 ////////////////////////////////////////////////////////////////////////////////
 
-#if defined(__UNIX__)
+#if defined(__PROSPERO__)
+
+namespace embree
+{
+  /* opens a shared library */
+  lib_t openLibrary(const std::string& file)
+  {
+    return lib_t(nullptr);
+  }
+
+  /* returns address of a symbol from the library */
+  void* getSymbol(lib_t lib, const std::string& sym) {
+    return nullptr;
+  }
+
+  /* closes the shared library */
+  void closeLibrary(lib_t lib) {
+  }
+}
+
+#elif defined(__UNIX__)
 
 #include <dlfcn.h>
 

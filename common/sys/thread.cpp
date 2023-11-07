@@ -277,7 +277,18 @@ namespace embree
 /// FreeBSD Platform
 ////////////////////////////////////////////////////////////////////////////////
 
-#if defined(__FreeBSD__)
+#if defined (__PROSPERO__)
+
+namespace embree
+{
+  /*! set affinity of the calling thread */
+  void setAffinity(ssize_t affinity)
+  {
+  }
+}
+
+
+#elif defined(__FreeBSD__)
 
 #include <pthread_np.h>
 
@@ -403,6 +414,12 @@ namespace embree
       threadID = mapThreadID(threadID);
       CPU_SET(threadID, &cset);
       pthread_setaffinity_np(*tid, sizeof(cset), &cset);
+    }
+#elif defined(__PROSPERO__)
+    if (threadID >= 0) {
+      cpuset_t cset;
+      CPU_ZERO(&cset);
+      CPU_SET(threadID, &cset);
     }
 #elif defined(__FreeBSD__)
     if (threadID >= 0) {

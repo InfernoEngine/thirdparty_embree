@@ -280,10 +280,43 @@ namespace embree
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
+/// Prospero Platform
+////////////////////////////////////////////////////////////////////////////////
+
+#if defined(__PROSPERO__)
+
+namespace embree
+{
+  bool os_init(bool hugepages, bool verbose)
+  {
+    return true;
+  }
+
+  void* os_malloc(size_t bytes, bool& hugepages)
+  {
+    return malloc(bytes);
+  }
+
+  size_t os_shrink(void* ptr, size_t bytesNew, size_t bytesOld, bool hugepages)
+  {
+    return bytesNew;
+  }
+
+  void os_free(void* ptr, size_t bytes, bool hugepages)
+  {
+    free(ptr);
+  }
+
+  void os_advise(void* pptr, size_t bytes)
+  {
+  }
+} // embree
+
+////////////////////////////////////////////////////////////////////////////////
 /// Unix Platform
 ////////////////////////////////////////////////////////////////////////////////
 
-#if defined(__UNIX__)
+#elif defined(__UNIX__)
 
 #include <sys/mman.h>
 #include <errno.h>

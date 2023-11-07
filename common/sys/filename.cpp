@@ -38,7 +38,9 @@ namespace embree
   /*! returns path to home folder */
   FileName FileName::homeFolder() 
   {
-#ifdef __WIN32__
+#ifdef __PROSPERO__
+    const char* home = "/home/";
+#elif defined(__WIN32__)
     const char* home = getenv("UserProfile");
 #else
     const char* home = getenv("HOME");

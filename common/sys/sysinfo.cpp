@@ -575,7 +575,27 @@ namespace embree
 /// FreeBSD Platform
 ////////////////////////////////////////////////////////////////////////////////
 
-#if defined (__FreeBSD__)
+#if defined (__PROSPERO__)
+
+namespace embree
+{
+
+  std::string getExecutableFileName()
+  {
+    return "/app/game.elf";
+  }
+
+  size_t getVirtualMemoryBytes() {
+    return 0;
+  }
+
+  size_t getResidentMemoryBytes() {
+    return 0;
+  }
+
+} // embree
+
+#elif defined (__FreeBSD__)
 
 #include <sys/sysctl.h>
 
@@ -637,7 +657,31 @@ namespace embree
 /// Unix Platform
 ////////////////////////////////////////////////////////////////////////////////
 
-#if defined(__UNIX__)
+#if defined(__PROSPERO__)
+
+namespace embree
+{
+  unsigned int getNumberOfLogicalThreads()
+  {
+    return 13;
+  }
+
+  int getTerminalWidth()
+  {
+    return 120;
+  }
+
+  double getSeconds() {
+    struct timeval tp; gettimeofday(&tp, nullptr);
+    return double(tp.tv_sec) + double(tp.tv_usec) / 1E6;
+  }
+
+  void sleepSeconds(double t) {
+    usleep(1000000.0 * t);
+  }
+}
+
+#elif defined(__UNIX__)
 
 #include <unistd.h>
 #include <sys/ioctl.h>
