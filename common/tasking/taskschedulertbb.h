@@ -28,8 +28,8 @@
 #define __TBBMALLOC_NO_IMPLICIT_LINKAGE 1
 #define TBB_SUPPRESS_DEPRECATED_MESSAGES 1
 #define TBB_PREVIEW_ISOLATED_TASK_GROUP 1
-#include "tbb/tbb.h"
-#include "tbb/parallel_sort.h"
+#include <tbb/tbb.h>
+#include <tbb/parallel_sort.h>
 
 #if defined(TASKING_TBB) && (TBB_INTERFACE_VERSION_MAJOR >= 8)
 #  define USE_TASK_ARENA 1

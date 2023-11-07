@@ -21,7 +21,7 @@ namespace embree
   {
     std::string fullName = file+".dll";
     FileName executable = getExecutableFileName();
-    HANDLE handle = LoadLibrary((executable.path() + fullName).c_str());
+    HANDLE handle = LoadLibraryA((executable.path() + fullName).c_str());
     return lib_t(handle);
   }
 

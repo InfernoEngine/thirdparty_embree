@@ -334,7 +334,7 @@ namespace embree
     return r;
 #else
 
-#if defined(__AVX512VL__)
+#if defined(__AVX512VL__) && !defined(_MSC_VER)
     vfloat4 r = _mm_rsqrt14_ps(a);
 #else
     vfloat4 r = _mm_rsqrt_ps(a);

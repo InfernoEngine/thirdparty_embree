@@ -124,7 +124,7 @@ namespace embree
 #endif
 
       /* filter out invalid rays */
-      vbool<K> valid = *valid_i == -1;
+      vbool<K> valid = *valid_i == vint<K>(-1);
 #if defined(EMBREE_IGNORE_INVALID_RAYS)
       valid &= ray.valid();
 #endif
@@ -146,8 +146,8 @@ namespace embree
 
       /* load ray */
       TravRayK<K, robust> tray(ray.org, ray.dir, single ? N : 0);
-      const vfloat<K> org_ray_tnear = max(ray.tnear(), 0.0f);
-      const vfloat<K> org_ray_tfar  = max(ray.tfar , 0.0f);
+      const vfloat<K> org_ray_tnear = max(ray.tnear(), vfloat<K>(0.0f));
+      const vfloat<K> org_ray_tfar  = max(ray.tfar , vfloat<K>(0.0f));
 
       if (single)
       {
