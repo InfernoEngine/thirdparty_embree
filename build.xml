@@ -6,6 +6,7 @@
 
 	<Library>
 		<Name>thirdparty_embree</Name>
+    <GroupName>thirdparty</GroupName>
 		<SourceRoot>.</SourceRoot>
 		<ExportedIncludeDirectory>include</ExportedIncludeDirectory>
 		<ThirdParty>true</ThirdParty>
@@ -79,16 +80,16 @@
 		      kernels\subdiv\subdivpatch1base_eval.cpp
 		      kernels\subdiv\tessellation_cache.cpp
 
-		      #kernels\common\scene_curves.cpp
-		      #kernels\common\scene_grid_mesh.cpp
-		      #kernels\common\scene_instance.cpp
-		      #kernels\common\scene_instance_array.cpp
-		      #kernels\common\scene_line_segments.cpp
-		      #kernels\common\scene_points.cpp
-		      #kernels\common\scene_quad_mesh.cpp
-		      #kernels\common\scene_subdiv_mesh.cpp
-		      #kernels\common\scene_triangle_mesh.cpp
-		      #kernels\common\scene_user_geometry.cpp
+		      kernels\common\scene_curves.cpp
+		      kernels\common\scene_grid_mesh.cpp
+		      kernels\common\scene_instance.cpp
+		      kernels\common\scene_instance_array.cpp
+		      kernels\common\scene_line_segments.cpp
+		      kernels\common\scene_points.cpp
+		      kernels\common\scene_quad_mesh.cpp
+		      kernels\common\scene_subdiv_mesh.cpp
+		      kernels\common\scene_triangle_mesh.cpp
+		      kernels\common\scene_user_geometry.cpp
 
 		      #DISABLED: kernels\geometry\primitive8.cpp
 		      #DISABLED: kernels\bvh\bvh_intersector1_bvh8.cpp
@@ -119,6 +120,7 @@
 
     <StaticLibrary>
     	<Name>thirdparty_embree_avx2</Name>
+      <GroupName>thirdparty</GroupName>
 		<SourceRoot>.</SourceRoot>
 		<ExportedIncludeDirectory>include</ExportedIncludeDirectory>
 		<AdvancedInstructionSet>AVX2</AdvancedInstructionSet>
@@ -171,6 +173,7 @@
 
     <StaticLibrary>
     	<Name>thirdparty_embree_avx</Name>
+      <GroupName>thirdparty</GroupName>
 		<SourceRoot>.</SourceRoot>
 		<ExportedIncludeDirectory>include</ExportedIncludeDirectory>
 		<ThirdParty>true</ThirdParty>
@@ -226,6 +229,7 @@
 
 	<StaticLibrary>
     	<Name>thirdparty_embree_sse42</Name>
+    <GroupName>thirdparty</GroupName>
 		<SourceRoot>.</SourceRoot>
 		<ExportedIncludeDirectory>include</ExportedIncludeDirectory>
 		<ThirdParty>true</ThirdParty>
