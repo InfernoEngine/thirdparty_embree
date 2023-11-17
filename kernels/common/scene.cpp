@@ -894,6 +894,7 @@ namespace embree
     }
 
     /* initiate build */
+#if PLATFORM_HAS_EXCEPTIONS
     try {
       TaskScheduler::TaskGroupContext context;
       scheduler->spawn_root([&]() { commit_task(); Lock<MutexSys> lock(taskGroup->schedulerMutex); taskGroup->scheduler = nullptr; }, &context, 1, !join);
@@ -904,6 +905,10 @@ namespace embree
       taskGroup->scheduler = nullptr;
       throw;
     }
+#else
+    TaskScheduler::TaskGroupContext context;
+    scheduler->spawn_root([&]() { commit_task(); Lock<MutexSys> lock(taskGroup->schedulerMutex); taskGroup->scheduler = nullptr; }, &context, 1, !join);
+#endif
   }
 
 #endif

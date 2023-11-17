@@ -328,12 +328,16 @@ namespace embree
 
   size_t getMaxNumThreads()
   {
+#if defined(__EMSCRIPTEN__)
+      return 1;
+#else
     size_t maxNumThreads = 0;
     for (std::map<Device*,size_t>::iterator i=g_num_threads_map.begin(); i != g_num_threads_map.end(); i++)
       maxNumThreads = max(maxNumThreads, (*i).second);
     if (maxNumThreads == 0)
       maxNumThreads = std::numeric_limits<size_t>::max();
     return maxNumThreads;
+#endif
   }
 
   size_t getMaxCacheSize()

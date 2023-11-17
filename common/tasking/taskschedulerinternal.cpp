@@ -48,6 +48,8 @@ namespace embree
     {
       Task* prevTask = thread.task;
       thread.task = this;
+
+#ifdef PLATFORM_HAS_EXCEPTION
       try {
         if (context->cancellingException == nullptr)
           closure->execute();
@@ -55,6 +57,10 @@ namespace embree
         if (context->cancellingException == nullptr)
           context->cancellingException = std::current_exception();
       }
+#else
+      if (context->cancellingException == nullptr)
+        closure->execute();
+#endif
       thread.task = prevTask;
       add_dependencies(-1);
     }

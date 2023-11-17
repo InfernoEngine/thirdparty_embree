@@ -194,6 +194,7 @@ namespace embree
   bool State::parseFile(const FileName& fileName)
   { 
     Ref<Stream<int> > file;
+#ifdef PLATFORM_HAS_EXCEPTIONS
     try {
       file = new FileStream(fileName);
     }
@@ -201,6 +202,9 @@ namespace embree
       (void) e;
       return false;
     }
+#else
+    file = new FileStream(fileName);
+#endif
     
     std::vector<std::string> syms;
     for (size_t i=0; i<sizeof(symbols)/sizeof(void*); i++) 

@@ -425,23 +425,28 @@ namespace embree
     }
 
     virtual unsigned int getFirstHalfEdge(unsigned int faceID) {
-      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"operation not supported for this geometry"); 
+      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"operation not supported for this geometry");
+      return 0;
     }
 
     virtual unsigned int getFace(unsigned int edgeID) {
-      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"operation not supported for this geometry"); 
+      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"operation not supported for this geometry");
+      return 0;
     }
     
     virtual unsigned int getNextHalfEdge(unsigned int edgeID) {
-      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"operation not supported for this geometry"); 
+      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"operation not supported for this geometry");
+      return 0;
     }
 
     virtual unsigned int getPreviousHalfEdge(unsigned int edgeID) {
-      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"operation not supported for this geometry"); 
+      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"operation not supported for this geometry");
+      return 0;
     }
 
     virtual unsigned int getOppositeHalfEdge(unsigned int topologyID, unsigned int edgeID) {
-      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"operation not supported for this geometry"); 
+      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"operation not supported for this geometry");
+      return 0;
     }
 
     /*! get fast access to first vertex buffer if applicable */
@@ -471,6 +476,7 @@ namespace embree
     /*! Gets specified buffer. */
     virtual void* getBuffer(RTCBufferType type, unsigned int slot) {
       throw_RTCError(RTC_ERROR_INVALID_OPERATION,"operation not supported for this geometry");
+      return nullptr;
     }
 
     /*! Set intersection filter function for ray packets of size N. */
@@ -510,11 +516,13 @@ namespace embree
     /*! Returns the transformation of the instance */
     virtual AffineSpace3fa getTransform(float time) {
       throw_RTCError(RTC_ERROR_INVALID_OPERATION,"operation not supported for this geometry");
+      return AffineSpace3fa();
     }
 
     /*! Returns the transformation of the instance */
     virtual AffineSpace3fa getTransform(size_t instance, float time) {
       throw_RTCError(RTC_ERROR_INVALID_OPERATION,"operation not supported for this geometry");
+      return AffineSpace3fa();
     }
 
     /*! for user geometries only */
@@ -546,7 +554,8 @@ namespace embree
   public:
 
     virtual PrimInfo createPrimRefArray(PrimRef* prims, const range<size_t>& r, size_t k, unsigned int geomID) const {
-      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"createPrimRefArray not implemented for this geometry"); 
+      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"createPrimRefArray not implemented for this geometry");
+      return PrimInfo();
     }
 
     PrimInfo createPrimRefArray(mvector<PrimRef>& prims, const range<size_t>& r, size_t k, unsigned int geomID) const {
@@ -562,12 +571,14 @@ namespace embree
     }
 
     virtual PrimInfo createPrimRefArrayMB(mvector<PrimRef>& prims, size_t itime, const range<size_t>& r, size_t k, unsigned int geomID) const {
-      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"createPrimRefMBArray not implemented for this geometry"); 
+      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"createPrimRefMBArray not implemented for this geometry");
+      return PrimInfo();
     }
 
     /*! Calculates the PrimRef over the complete time interval */
     virtual PrimInfo createPrimRefArrayMB(PrimRef* prims, const BBox1f& t0t1, const range<size_t>& r, size_t k, unsigned int geomID) const {
       throw_RTCError(RTC_ERROR_INVALID_OPERATION,"createPrimRefMBArray not implemented for this geometry");
+      return PrimInfo();
     }
 
     PrimInfo createPrimRefArrayMB(mvector<PrimRef>& prims, const BBox1f& t0t1, const range<size_t>& r, size_t k, unsigned int geomID) const {
@@ -579,7 +590,8 @@ namespace embree
     }
     
     virtual PrimInfoMB createPrimRefMBArray(mvector<PrimRefMB>& prims, const BBox1f& t0t1, const range<size_t>& r, size_t k, unsigned int geomID) const {
-      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"createPrimRefMBArray not implemented for this geometry"); 
+      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"createPrimRefMBArray not implemented for this geometry");
+      return PrimInfoMB();
     }
 
     virtual PrimInfoMB createPrimRefMBArray(mvector<PrimRefMB>& prims, mvector<SubGridBuildData>& sgrids, const BBox1f& t0t1, const range<size_t>& r, size_t k, unsigned int geomID) const {
@@ -587,35 +599,43 @@ namespace embree
     }
 
     virtual LinearSpace3fa computeAlignedSpace(const size_t primID) const {
-      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"computeAlignedSpace not implemented for this geometry"); 
+      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"computeAlignedSpace not implemented for this geometry");
+      return LinearSpace3fa();
     }
 
     virtual LinearSpace3fa computeAlignedSpaceMB(const size_t primID, const BBox1f time_range) const {
-      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"computeAlignedSpace not implemented for this geometry"); 
+      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"computeAlignedSpace not implemented for this geometry");
+      return LinearSpace3fa();
     }
     
     virtual Vec3fa computeDirection(unsigned int primID) const {
-      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"computeDirection not implemented for this geometry"); 
+      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"computeDirection not implemented for this geometry");
+      return Vec3fa();
     }
 
     virtual Vec3fa computeDirection(unsigned int primID, size_t time) const {
-      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"computeDirection not implemented for this geometry"); 
+      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"computeDirection not implemented for this geometry");
+      return Vec3fa();
     }
 
     virtual BBox3fa vbounds(size_t primID) const {
-      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"vbounds not implemented for this geometry"); 
+      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"vbounds not implemented for this geometry");
+      return BBox3fa();
     }
     
     virtual BBox3fa vbounds(const LinearSpace3fa& space, size_t primID) const {
-      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"vbounds not implemented for this geometry"); 
+      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"vbounds not implemented for this geometry");
+      return BBox3fa();
     }
 
     virtual BBox3fa vbounds(const Vec3fa& ofs, const float scale, const float r_scale0, const LinearSpace3fa& space, size_t i, size_t itime = 0) const {
-      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"vbounds not implemented for this geometry"); 
+      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"vbounds not implemented for this geometry");
+      return BBox3fa();
     }
 
     virtual LBBox3fa vlinearBounds(size_t primID, const BBox1f& time_range) const {
-      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"vlinearBounds not implemented for this geometry"); 
+      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"vlinearBounds not implemented for this geometry");
+      return LBBox3fa();
     }
 
     virtual LBBox3fa vlinearBounds(size_t primID, const BBox1f& time_range, const SubGridBuildData * const sgrids) const {
@@ -623,11 +643,13 @@ namespace embree
     }
     
     virtual LBBox3fa vlinearBounds(const LinearSpace3fa& space, size_t primID, const BBox1f& time_range) const {
-      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"vlinearBounds not implemented for this geometry"); 
+      throw_RTCError(RTC_ERROR_INVALID_OPERATION,"vlinearBounds not implemented for this geometry");
+      return LBBox3fa();
     }
 
     virtual LBBox3fa vlinearBounds(const Vec3fa& ofs, const float scale, const float r_scale0, const LinearSpace3fa& space, size_t primID, const BBox1f& time_range) const {
       throw_RTCError(RTC_ERROR_INVALID_OPERATION,"vlinearBounds not implemented for this geometry"); 
+      return LBBox3fa();
     }
     
   public:

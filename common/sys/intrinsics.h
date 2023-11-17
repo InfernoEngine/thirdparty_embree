@@ -477,17 +477,34 @@ namespace embree
 #if defined(__SSE4_2__) || defined(__ARM_NEON)
   
   __forceinline int popcnt(int in) {
+#if defined(__EMSCRIPTEN__)
+    return __builtin_popcount (in);
+#else
     return _mm_popcnt_u32(in);
+#endif
   }
   
   __forceinline unsigned popcnt(unsigned in) {
+#if defined(__EMSCRIPTEN__)
+    return __builtin_popcount (in);
+#else
     return _mm_popcnt_u32(in);
+#endif
   }
-  
+
 #if defined(__64BIT__)
   __forceinline size_t popcnt(size_t in) {
     return _mm_popcnt_u64(in);
   }
+#else
+  __forceinline size_t popcnt(size_t in) {
+#if defined(__EMSCRIPTEN__)
+    return __builtin_popcount(in);
+#else
+    return _mm_popcnt_u32(in);
+#endif
+  }
+
 #endif
   
 #endif

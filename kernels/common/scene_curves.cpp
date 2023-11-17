@@ -616,7 +616,7 @@ namespace embree
       case Geometry::GTY_FLAT_CATMULL_ROM_CURVE : return new CurveGeometryISA<Geometry::GTY_SUBTYPE_FLAT_CURVE,CurveGeometryInterface,CatmullRomCurveT>(device,gtype);
       case Geometry::GTY_ORIENTED_CATMULL_ROM_CURVE : return new CurveGeometryISA<Geometry::GTY_SUBTYPE_ORIENTED_CURVE,CurveGeometryInterface,CatmullRomCurveT>(device,gtype);
      
-      default: throw_RTCError(RTC_ERROR_INVALID_OPERATION,"invalid geometry type");
+      default: throw_RTCError(RTC_ERROR_INVALID_OPERATION,"invalid geometry type"); return nullptr;
       }
     }
   }

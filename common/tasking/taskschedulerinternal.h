@@ -130,8 +130,11 @@ namespace embree
       __forceinline void* alloc(size_t bytes, size_t align = 64)
       {
         size_t ofs = bytes + ((align - stackPtr) & (align-1));
-        if (stackPtr + ofs > CLOSURE_STACK_SIZE)
+        if (stackPtr + ofs > CLOSURE_STACK_SIZE) {
+#ifdef PLATFORM_HAS_EXCEPTION
           throw std::runtime_error("closure stack overflow");
+#endif
+        }
         stackPtr += ofs;
         return &stack[stackPtr-bytes];
       }
@@ -139,8 +142,11 @@ namespace embree
       template<typename Closure>
       __forceinline void push_right(Thread& thread, const size_t size, const Closure& closure, TaskGroupContext* context)
       {
-        if (right >= TASK_STACK_SIZE)
+        if (right >= TASK_STACK_SIZE) {
+#ifdef PLATFORM_HAS_EXCEPTION
           throw std::runtime_error("task stack overflow");
+#endif
+        }
 
 	/* allocate new task on right side of stack */
         size_t oldStackPtr = stackPtr;

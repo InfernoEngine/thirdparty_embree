@@ -364,8 +364,9 @@ RTC_NAMESPACE_BEGIN
       RTC_VERIFY_HANDLE(arguments->setNodeBounds);
       RTC_VERIFY_HANDLE(arguments->createLeaf);
 
-      if (arguments->primitiveArrayCapacity < arguments->primitiveCount)
+      if (arguments->primitiveArrayCapacity < arguments->primitiveCount) {
         throw_RTCError(RTC_ERROR_INVALID_ARGUMENT,"primitiveArrayCapacity must be greater or equal to primitiveCount")
+      }
 
       /* initialize the allocator */
       bvh->allocator.init_estimate(arguments->primitiveCount*sizeof(BBox3fa));
@@ -382,8 +383,9 @@ RTC_NAMESPACE_BEGIN
         else
           return rtcBuildBVHSpatialSAH(arguments);
       }
-      else
+      else {
         throw_RTCError(RTC_ERROR_INVALID_OPERATION,"invalid build quality");
+      }
 
       /* if we are in dynamic mode, then do not clear temporary data */
       if (!(arguments->buildFlags & RTC_BUILD_FLAG_DYNAMIC))

@@ -160,7 +160,9 @@ namespace embree
       typedef std::ptrdiff_t difference_type;
 
       __forceinline pointer allocate( size_type n ) {
+#ifdef PLATFORM_HAS_EXCEPTION
         throw std::runtime_error("no allocation supported");
+#endif
       }
 
       __forceinline void deallocate( pointer p, size_type n ) {

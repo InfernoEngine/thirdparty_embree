@@ -28,7 +28,7 @@ namespace embree
   namespace avx    { extern type symbol(args); }                       \
   namespace avx2   { extern type symbol(args); }                       \
   namespace avx512 { extern type symbol(args); }                     \
-  inline type symbol##_error(args) { throw_RTCError(RTC_ERROR_UNSUPPORTED_CPU,"function " TOSTRING(symbol) " not supported by your CPU"); } \
+  inline type symbol##_error(args) { throw_RTCError(RTC_ERROR_UNSUPPORTED_CPU,"function " TOSTRING(symbol) " not supported by your CPU"); return nullptr; } \
   typedef type (*symbol##Ty)(args);                                       \
   
 #define DEFINE_ISA_FUNCTION(type,symbol,args)   \

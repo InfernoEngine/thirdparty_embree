@@ -39,7 +39,9 @@ namespace embree
     std::vector<char> str; str.reserve(64);
     while (cin->peek() != EOF && !isSeparator(cin->peek())) {
       int c = cin->get();
+#ifdef PLATFORM_HAS_EXCEPTION
       if (!isValidChar(c)) throw std::runtime_error("invalid character "+std::string(1,c)+" in input");
+#endif
       str.push_back((char)c);
     }
     str.push_back(0);

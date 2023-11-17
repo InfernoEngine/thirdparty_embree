@@ -1,258 +1,264 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <Module>
-	
-	<GlobalSolutionName>ThirdParty</GlobalSolutionName>
-	<GlobalNamespace>potato</GlobalNamespace>
 
-	<Library>
-		<Name>thirdparty_embree</Name>
+  <GlobalSolutionName>ThirdParty</GlobalSolutionName>
+  <GlobalNamespace>potato</GlobalNamespace>
+
+  <Library>
+    <Name>thirdparty_embree</Name>
     <GroupName>thirdparty</GroupName>
-		<SourceRoot>.</SourceRoot>
-		<ExportedIncludeDirectory>include</ExportedIncludeDirectory>
-		<ThirdParty>true</ThirdParty>
-		<ThirdPartySharedGlobalExportDefine>EMBREE_SHARED_LIB</ThirdPartySharedGlobalExportDefine>
-		<ThirdPartySharedLocalBuildDefine>RTC_EXPORT_API</ThirdPartySharedLocalBuildDefine>
-		<PreprocessorDefines>EMBREE_LOWEST_ISA;TASKING_INTERNAL;</PreprocessorDefines>
-		<PreprocessorDefines>__SSE__;__SSE2__;__SSE3__;__SSSE3__;__SSE4_1__;__SSE4_2__</PreprocessorDefines>
-		<PreprocessorDefines>EMBREE_TARGET_SSE2;EMBREE_TARGET_SSE42;EMBREE_TARGET_AVX;EMBREE_TARGET_AVX2</PreprocessorDefines>
-		<ThirdPartySourceFile>
-		      common\lexers\stringstream.cpp
-		      common\lexers\tokenstream.cpp
-		      common\math\constants.cpp
-		      common\simd\sse.cpp
-		      common\sys\alloc.cpp
-		      common\sys\barrier.cpp
-		      common\sys\condition.cpp
-		      common\sys\estring.cpp
-		      common\sys\filename.cpp
-		      common\sys\library.cpp
-		      common\sys\mutex.cpp
-		      common\sys\regression.cpp
-		      common\sys\sysinfo.cpp
-		      common\sys\thread.cpp
-		      common\tasking\taskschedulerinternal.cpp
-		      kernels\builders\primrefgen.cpp
-		      kernels\bvh\bvh.cpp
-		      kernels\bvh\bvh4_factory.cpp
-		      kernels\bvh\bvh8_factory.cpp
-		      kernels\bvh\bvh_builder.cpp
-		      kernels\bvh\bvh_builder_hair.cpp
-		      kernels\bvh\bvh_builder_hair_mb.cpp
-		      kernels\bvh\bvh_builder_morton.cpp
-		      kernels\bvh\bvh_builder_sah.cpp
-		      kernels\bvh\bvh_builder_sah_mb.cpp
-		      kernels\bvh\bvh_builder_sah_spatial.cpp
-		      kernels\bvh\bvh_builder_subdiv.cpp
-		      kernels\bvh\bvh_builder_twolevel.cpp
-		      kernels\bvh\bvh_collider.cpp
-		      kernels\bvh\bvh_intersector1.cpp
-		      kernels\bvh\bvh_intersector1_bvh4.cpp
-		      kernels\bvh\bvh_refit.cpp
-		      kernels\bvh\bvh_rotate.cpp
-		      kernels\bvh\bvh_statistics.cpp
-		      kernels\common\acceln.cpp
-		      kernels\common\accelset.cpp
-		      kernels\common\alloc.cpp
-		      kernels\common\device.cpp
-		      kernels\common\geometry.cpp
-		      kernels\common\motion_derivative.cpp
-		      kernels\common\rtcore.cpp
-		      kernels\common\rtcore_builder.cpp
-		      kernels\common\scene.cpp		      
-		      kernels\common\scene_verify.cpp
-		      kernels\common\stat.cpp
-		      kernels\common\state.cpp
-		      kernels\geometry\curve_intersector_virtual_4i.cpp
-		      kernels\geometry\curve_intersector_virtual_4i_mb.cpp
-		      kernels\geometry\curve_intersector_virtual_4v.cpp
-		      kernels\geometry\curve_intersector_virtual_8i.cpp
-		      kernels\geometry\curve_intersector_virtual_8i_mb.cpp
-		      kernels\geometry\curve_intersector_virtual_8v.cpp
-		      kernels\geometry\grid_soa.cpp
-		      kernels\geometry\instance_array_intersector.cpp
-		      kernels\geometry\instance_intersector.cpp
-		      kernels\geometry\primitive4.cpp
-		      kernels\subdiv\bezier_curve.cpp
-		      kernels\subdiv\bspline_curve.cpp
-		      kernels\subdiv\catmullclark_coefficients.cpp
-		      kernels\subdiv\catmullrom_curve.cpp
-		      kernels\subdiv\subdivpatch1base.cpp
-		      kernels\subdiv\subdivpatch1base_eval.cpp
-		      kernels\subdiv\tessellation_cache.cpp
+    <SourceRoot>.</SourceRoot>
+    <ExportedIncludeDirectory>include</ExportedIncludeDirectory>
+    <ThirdParty>true</ThirdParty>
+    <ThirdPartySharedGlobalExportDefine>EMBREE_SHARED_LIB</ThirdPartySharedGlobalExportDefine>
+    <ThirdPartySharedLocalBuildDefine>RTC_EXPORT_API</ThirdPartySharedLocalBuildDefine>
+    <PreprocessorDefines>TASKING_INTERNAL;</PreprocessorDefines>
+    <PreprocessorDefines>EMBREE_LOWEST_ISA;EMBREE_TARGET_SSE2;EMBREE_TARGET_SSE42</PreprocessorDefines>
+    
+    <FilterPlatform exclude="wasm">
+      <PreprocessorDefines>EMBREE_TARGET_AVX;EMBREE_TARGET_AVX2</PreprocessorDefines>
+    </FilterPlatform>
 
-		      kernels\common\scene_curves.cpp
-		      kernels\common\scene_grid_mesh.cpp
-		      kernels\common\scene_instance.cpp
-		      kernels\common\scene_instance_array.cpp
-		      kernels\common\scene_line_segments.cpp
-		      kernels\common\scene_points.cpp
-		      kernels\common\scene_quad_mesh.cpp
-		      kernels\common\scene_subdiv_mesh.cpp
-		      kernels\common\scene_triangle_mesh.cpp
-		      kernels\common\scene_user_geometry.cpp
+    <ThirdPartySourceFile>
+      common\lexers\stringstream.cpp
+      common\lexers\tokenstream.cpp
+      common\math\constants.cpp
+      common\simd\sse.cpp
+      common\sys\alloc.cpp
+      common\sys\barrier.cpp
+      common\sys\condition.cpp
+      common\sys\estring.cpp
+      common\sys\filename.cpp
+      common\sys\library.cpp
+      common\sys\mutex.cpp
+      common\sys\regression.cpp
+      common\sys\sysinfo.cpp
+      common\sys\thread.cpp
+      common\tasking\taskschedulerinternal.cpp
+      kernels\builders\primrefgen.cpp
+      kernels\bvh\bvh.cpp
+      kernels\bvh\bvh4_factory.cpp
+      kernels\bvh\bvh8_factory.cpp
+      kernels\bvh\bvh_builder.cpp
+      kernels\bvh\bvh_builder_hair.cpp
+      kernels\bvh\bvh_builder_hair_mb.cpp
+      kernels\bvh\bvh_builder_morton.cpp
+      kernels\bvh\bvh_builder_sah.cpp
+      kernels\bvh\bvh_builder_sah_mb.cpp
+      kernels\bvh\bvh_builder_sah_spatial.cpp
+      kernels\bvh\bvh_builder_subdiv.cpp
+      kernels\bvh\bvh_builder_twolevel.cpp
+      kernels\bvh\bvh_collider.cpp
+      kernels\bvh\bvh_intersector1.cpp
+      kernels\bvh\bvh_intersector1_bvh4.cpp
+      kernels\bvh\bvh_refit.cpp
+      kernels\bvh\bvh_rotate.cpp
+      kernels\bvh\bvh_statistics.cpp
+      kernels\common\acceln.cpp
+      kernels\common\accelset.cpp
+      kernels\common\alloc.cpp
+      kernels\common\device.cpp
+      kernels\common\geometry.cpp
+      kernels\common\motion_derivative.cpp
+      kernels\common\rtcore.cpp
+      kernels\common\rtcore_builder.cpp
+      kernels\common\scene.cpp
+      kernels\common\scene_verify.cpp
+      kernels\common\stat.cpp
+      kernels\common\state.cpp
+      kernels\geometry\curve_intersector_virtual_4i.cpp
+      kernels\geometry\curve_intersector_virtual_4i_mb.cpp
+      kernels\geometry\curve_intersector_virtual_4v.cpp
+      kernels\geometry\curve_intersector_virtual_8i.cpp
+      kernels\geometry\curve_intersector_virtual_8i_mb.cpp
+      kernels\geometry\curve_intersector_virtual_8v.cpp
+      kernels\geometry\grid_soa.cpp
+      kernels\geometry\instance_array_intersector.cpp
+      kernels\geometry\instance_intersector.cpp
+      kernels\geometry\primitive4.cpp
+      kernels\subdiv\bezier_curve.cpp
+      kernels\subdiv\bspline_curve.cpp
+      kernels\subdiv\catmullclark_coefficients.cpp
+      kernels\subdiv\catmullrom_curve.cpp
+      kernels\subdiv\subdivpatch1base.cpp
+      kernels\subdiv\subdivpatch1base_eval.cpp
+      kernels\subdiv\tessellation_cache.cpp
 
-		      #DISABLED: kernels\geometry\primitive8.cpp
-		      #DISABLED: kernels\bvh\bvh_intersector1_bvh8.cpp
-		      #DISABLED: kernels\bvh\bvh_intersector_hybrid4_bvh4.cpp
-		      #DISABLED: kernels\bvh\bvh_intersector_hybrid4_bvh8.cpp
-		      #DISABLED: kernels\bvh\bvh_intersector_hybrid8_bvh4.cpp
-		      #DISABLED: kernels\bvh\bvh_intersector_hybrid8_bvh8.cpp
-		      #DISABLED: common\tasking\taskschedulerppl.cpp
-		      #DISABLED: common\tasking\taskschedulertbb.cpp
-		      #DISABLED: kernels\bvh\bvh_intersector_hybrid16_bvh4.cpp
-		      #DISABLED: kernels\bvh\bvh_intersector_hybrid16_bvh8.cpp
-		      #DISABLED: kernels\level_zero\ze_wrapper.cpp
-		      #DISABLED: kernels\rthwif\rtbuild\qbvh6.cpp
-		      #DISABLED: kernels\rthwif\rtbuild\rtbuild.cpp
-		      #DISABLED: kernels\rthwif\rtbuild\statistics.cpp
-		      #DISABLED: kernels\rthwif\rttrace\rttrace_validation.cpp
-		      #DISABLED: kernels\rthwif\testing\rthwif_cornell_box.cpp
-		      #DISABLED: kernels\rthwif\testing\rthwif_test.cpp
-		      #DISABLED: kernels\sycl\rtcore_sycl.cpp
-		      #DISABLED: kernels\sycl\rthwif_embree.cpp
-		      #DISABLED: kernels\sycl\rthwif_embree_builder.cpp
-    	</ThirdPartySourceFile>
+      kernels\common\scene_curves.cpp
+      kernels\common\scene_grid_mesh.cpp
+      kernels\common\scene_instance.cpp
+      kernels\common\scene_instance_array.cpp
+      kernels\common\scene_line_segments.cpp
+      kernels\common\scene_points.cpp
+      kernels\common\scene_quad_mesh.cpp
+      kernels\common\scene_subdiv_mesh.cpp
+      kernels\common\scene_triangle_mesh.cpp
+      kernels\common\scene_user_geometry.cpp
 
-    	<Dependency>thirdparty_embree_sse42</Dependency>
-    	<Dependency>thirdparty_embree_avx</Dependency>
-    	<Dependency>thirdparty_embree_avx2</Dependency>
-	</Library>
+      #DISABLED: kernels\geometry\primitive8.cpp
+      #DISABLED: kernels\bvh\bvh_intersector1_bvh8.cpp
+      #DISABLED: kernels\bvh\bvh_intersector_hybrid4_bvh4.cpp
+      #DISABLED: kernels\bvh\bvh_intersector_hybrid4_bvh8.cpp
+      #DISABLED: kernels\bvh\bvh_intersector_hybrid8_bvh4.cpp
+      #DISABLED: kernels\bvh\bvh_intersector_hybrid8_bvh8.cpp
+      #DISABLED: common\tasking\taskschedulerppl.cpp
+      #DISABLED: common\tasking\taskschedulertbb.cpp
+      #DISABLED: kernels\bvh\bvh_intersector_hybrid16_bvh4.cpp
+      #DISABLED: kernels\bvh\bvh_intersector_hybrid16_bvh8.cpp
+      #DISABLED: kernels\level_zero\ze_wrapper.cpp
+      #DISABLED: kernels\rthwif\rtbuild\qbvh6.cpp
+      #DISABLED: kernels\rthwif\rtbuild\rtbuild.cpp
+      #DISABLED: kernels\rthwif\rtbuild\statistics.cpp
+      #DISABLED: kernels\rthwif\rttrace\rttrace_validation.cpp
+      #DISABLED: kernels\rthwif\testing\rthwif_cornell_box.cpp
+      #DISABLED: kernels\rthwif\testing\rthwif_test.cpp
+      #DISABLED: kernels\sycl\rtcore_sycl.cpp
+      #DISABLED: kernels\sycl\rthwif_embree.cpp
+      #DISABLED: kernels\sycl\rthwif_embree_builder.cpp
+    </ThirdPartySourceFile>
+
+    <Dependency>thirdparty_embree_sse42</Dependency>
+
+    <FilterPlatform exclude="wasm">
+      <Dependency>thirdparty_embree_avx</Dependency>
+      <Dependency>thirdparty_embree_avx2</Dependency>
+    </FilterPlatform>
+  </Library>
+
+  <FilterPlatform exclude="wasm">
+    <StaticLibrary>
+      <Name>thirdparty_embree_avx2</Name>
+      <GroupName>thirdparty</GroupName>
+      <SourceRoot>.</SourceRoot>
+      <ExportedIncludeDirectory>include</ExportedIncludeDirectory>
+      <AdvancedInstructionSet>AVX2</AdvancedInstructionSet>
+      <ThirdParty>true</ThirdParty>
+      <PreprocessorDefines>TASKING_INTERNAL;</PreprocessorDefines>
+      
+      <ThirdPartySourceFile>
+        build\builders\primrefgen.cpp.avx2.cpp
+        build\bvh\bvh_builder.cpp.avx2.cpp
+        build\bvh\bvh_builder_hair.cpp.avx2.cpp
+        build\bvh\bvh_builder_hair_mb.cpp.avx2.cpp
+        build\bvh\bvh_builder_morton.cpp.avx2.cpp
+        build\bvh\bvh_builder_sah.cpp.avx2.cpp
+        build\bvh\bvh_builder_sah_mb.cpp.avx2.cpp
+        build\bvh\bvh_builder_sah_spatial.cpp.avx2.cpp
+        build\bvh\bvh_builder_subdiv.cpp.avx2.cpp
+        build\bvh\bvh_builder_twolevel.cpp.avx2.cpp
+        build\bvh\bvh_collider.cpp.avx2.cpp
+        build\bvh\bvh_intersector1_bvh4.cpp.avx2.cpp
+        build\bvh\bvh_intersector1_bvh8.cpp.avx2.cpp
+        build\bvh\bvh_intersector_hybrid4_bvh4.cpp.avx2.cpp
+        build\bvh\bvh_intersector_hybrid4_bvh8.cpp.avx2.cpp
+        build\bvh\bvh_intersector_hybrid8_bvh4.cpp.avx2.cpp
+        build\bvh\bvh_intersector_hybrid8_bvh8.cpp.avx2.cpp
+        build\bvh\bvh_refit.cpp.avx2.cpp
+        build\bvh\bvh_rotate.cpp.avx2.cpp
+        build\common\scene_curves.cpp.avx2.cpp
+        build\common\scene_grid_mesh.cpp.avx2.cpp
+        build\common\scene_instance.cpp.avx2.cpp
+        build\common\scene_instance_array.cpp.avx2.cpp
+        build\common\scene_line_segments.cpp.avx2.cpp
+        build\common\scene_points.cpp.avx2.cpp
+        build\common\scene_quad_mesh.cpp.avx2.cpp
+        build\common\scene_subdiv_mesh.cpp.avx2.cpp
+        build\common\scene_triangle_mesh.cpp.avx2.cpp
+        build\common\scene_user_geometry.cpp.avx2.cpp
+        build\geometry\curve_intersector_virtual_4i.cpp.avx2.cpp
+        build\geometry\curve_intersector_virtual_4i_mb.cpp.avx2.cpp
+        build\geometry\curve_intersector_virtual_4v.cpp.avx2.cpp
+        build\geometry\curve_intersector_virtual_8i.cpp.avx2.cpp
+        build\geometry\curve_intersector_virtual_8i_mb.cpp.avx2.cpp
+        build\geometry\curve_intersector_virtual_8v.cpp.avx2.cpp
+        build\geometry\grid_soa.cpp.avx2.cpp
+        build\geometry\instance_array_intersector.cpp.avx2.cpp
+        build\geometry\instance_intersector.cpp.avx2.cpp
+        build\subdiv\subdivpatch1base_eval.cpp.avx2.cpp
+      </ThirdPartySourceFile>
+    </StaticLibrary>
 
     <StaticLibrary>
-    	<Name>thirdparty_embree_avx2</Name>
+      <Name>thirdparty_embree_avx</Name>
       <GroupName>thirdparty</GroupName>
-		<SourceRoot>.</SourceRoot>
-		<ExportedIncludeDirectory>include</ExportedIncludeDirectory>
-		<AdvancedInstructionSet>AVX2</AdvancedInstructionSet>
-		<ThirdParty>true</ThirdParty>
-		<PreprocessorDefines>TASKING_INTERNAL;</PreprocessorDefines>
-		<PreprocessorDefines>__SSE__;__SSE2__;__SSE3__;__SSSE3__;__SSE4_1__;__SSE4_2__</PreprocessorDefines>
-		<PreprocessorDefines>EMBREE_TARGET_SSE2;EMBREE_TARGET_SSE42;EMBREE_TARGET_AVX;EMBREE_TARGET_AVX2</PreprocessorDefines>
-		<ThirdPartySourceFile>
-			build\builders\primrefgen.cpp.avx2.cpp
-			build\bvh\bvh_builder.cpp.avx2.cpp     
-			build\bvh\bvh_builder_hair.cpp.avx2.cpp
-			build\bvh\bvh_builder_hair_mb.cpp.avx2.cpp
-			build\bvh\bvh_builder_morton.cpp.avx2.cpp
-			build\bvh\bvh_builder_sah.cpp.avx2.cpp
-			build\bvh\bvh_builder_sah_mb.cpp.avx2.cpp
-			build\bvh\bvh_builder_sah_spatial.cpp.avx2.cpp
-			build\bvh\bvh_builder_subdiv.cpp.avx2.cpp
-			build\bvh\bvh_builder_twolevel.cpp.avx2.cpp
-			build\bvh\bvh_collider.cpp.avx2.cpp
-			build\bvh\bvh_intersector1_bvh4.cpp.avx2.cpp
-			build\bvh\bvh_intersector1_bvh8.cpp.avx2.cpp
-			build\bvh\bvh_intersector_hybrid4_bvh4.cpp.avx2.cpp
-			build\bvh\bvh_intersector_hybrid4_bvh8.cpp.avx2.cpp
-			build\bvh\bvh_intersector_hybrid8_bvh4.cpp.avx2.cpp
-			build\bvh\bvh_intersector_hybrid8_bvh8.cpp.avx2.cpp
-			build\bvh\bvh_refit.cpp.avx2.cpp
-			build\bvh\bvh_rotate.cpp.avx2.cpp
-			build\common\scene_curves.cpp.avx2.cpp
-			build\common\scene_grid_mesh.cpp.avx2.cpp
-			build\common\scene_instance.cpp.avx2.cpp
-			build\common\scene_instance_array.cpp.avx2.cpp
-			build\common\scene_line_segments.cpp.avx2.cpp
-			build\common\scene_points.cpp.avx2.cpp
-			build\common\scene_quad_mesh.cpp.avx2.cpp
-			build\common\scene_subdiv_mesh.cpp.avx2.cpp
-			build\common\scene_triangle_mesh.cpp.avx2.cpp
-			build\common\scene_user_geometry.cpp.avx2.cpp
-			build\geometry\curve_intersector_virtual_4i.cpp.avx2.cpp
-			build\geometry\curve_intersector_virtual_4i_mb.cpp.avx2.cpp
-			build\geometry\curve_intersector_virtual_4v.cpp.avx2.cpp
-			build\geometry\curve_intersector_virtual_8i.cpp.avx2.cpp
-			build\geometry\curve_intersector_virtual_8i_mb.cpp.avx2.cpp
-			build\geometry\curve_intersector_virtual_8v.cpp.avx2.cpp
-			build\geometry\grid_soa.cpp.avx2.cpp
-			build\geometry\instance_array_intersector.cpp.avx2.cpp
-			build\geometry\instance_intersector.cpp.avx2.cpp
-			build\subdiv\subdivpatch1base_eval.cpp.avx2.cpp
-		</ThirdPartySourceFile>
-	</StaticLibrary>
+      <SourceRoot>.</SourceRoot>
+      <ExportedIncludeDirectory>include</ExportedIncludeDirectory>
+      <ThirdParty>true</ThirdParty>
+      <AdvancedInstructionSet>AVX</AdvancedInstructionSet>
+      <PreprocessorDefines>TASKING_INTERNAL;</PreprocessorDefines>
+      
+      <ThirdPartySourceFile>
+        build\builders\primrefgen.cpp.avx.cpp
+        build\bvh\bvh.cpp.avx.cpp
+        build\bvh\bvh_builder.cpp.avx.cpp
+        build\bvh\bvh_builder_hair.cpp.avx.cpp
+        build\bvh\bvh_builder_hair_mb.cpp.avx.cpp
+        build\bvh\bvh_builder_morton.cpp.avx.cpp
+        build\bvh\bvh_builder_sah.cpp.avx.cpp
+        build\bvh\bvh_builder_sah_mb.cpp.avx.cpp
+        build\bvh\bvh_builder_sah_spatial.cpp.avx.cpp
+        build\bvh\bvh_builder_subdiv.cpp.avx.cpp
+        build\bvh\bvh_builder_twolevel.cpp.avx.cpp
+        build\bvh\bvh_collider.cpp.avx.cpp
+        build\bvh\bvh_intersector1_bvh4.cpp.avx.cpp
+        build\bvh\bvh_intersector1_bvh8.cpp.avx.cpp
+        build\bvh\bvh_intersector_hybrid4_bvh4.cpp.avx.cpp
+        build\bvh\bvh_intersector_hybrid4_bvh8.cpp.avx.cpp
+        build\bvh\bvh_intersector_hybrid8_bvh4.cpp.avx.cpp
+        build\bvh\bvh_intersector_hybrid8_bvh8.cpp.avx.cpp
+        build\bvh\bvh_refit.cpp.avx.cpp
+        build\bvh\bvh_rotate.cpp.avx.cpp
+        build\bvh\bvh_statistics.cpp.avx.cpp
+        build\common\scene_curves.cpp.avx.cpp
+        build\common\scene_grid_mesh.cpp.avx.cpp
+        build\common\scene_instance.cpp.avx.cpp
+        build\common\scene_instance_array.cpp.avx.cpp
+        build\common\scene_line_segments.cpp.avx.cpp
+        build\common\scene_points.cpp.avx.cpp
+        build\common\scene_quad_mesh.cpp.avx.cpp
+        build\common\scene_subdiv_mesh.cpp.avx.cpp
+        build\common\scene_triangle_mesh.cpp.avx.cpp
+        build\common\scene_user_geometry.cpp.avx.cpp
+        build\geometry\curve_intersector_virtual_4i.cpp.avx.cpp
+        build\geometry\curve_intersector_virtual_4i_mb.cpp.avx.cpp
+        build\geometry\curve_intersector_virtual_4v.cpp.avx.cpp
+        build\geometry\curve_intersector_virtual_8i.cpp.avx.cpp
+        build\geometry\curve_intersector_virtual_8i_mb.cpp.avx.cpp
+        build\geometry\curve_intersector_virtual_8v.cpp.avx.cpp
+        build\geometry\grid_soa.cpp.avx.cpp
+        build\geometry\instance_array_intersector.cpp.avx.cpp
+        build\geometry\instance_intersector.cpp.avx.cpp
+        build\geometry\primitive8.cpp.avx.cpp
+        build\subdiv\subdivpatch1base_eval.cpp.avx.cpp
+      </ThirdPartySourceFile>
+    </StaticLibrary>
+  </FilterPlatform>
 
-    <StaticLibrary>
-    	<Name>thirdparty_embree_avx</Name>
-      <GroupName>thirdparty</GroupName>
-		<SourceRoot>.</SourceRoot>
-		<ExportedIncludeDirectory>include</ExportedIncludeDirectory>
-		<ThirdParty>true</ThirdParty>
-		<AdvancedInstructionSet>AVX</AdvancedInstructionSet>
-		<PreprocessorDefines>TASKING_INTERNAL;</PreprocessorDefines>
-		<PreprocessorDefines>__SSE__;__SSE2__;__SSE3__;__SSSE3__;__SSE4_1__;__SSE4_2__</PreprocessorDefines>
-		<PreprocessorDefines>EMBREE_TARGET_SSE2;EMBREE_TARGET_SSE42;EMBREE_TARGET_AVX;EMBREE_TARGET_AVX2</PreprocessorDefines>
-		<ThirdPartySourceFile>
-			  build\builders\primrefgen.cpp.avx.cpp
-		      build\bvh\bvh.cpp.avx.cpp
-		      build\bvh\bvh_builder.cpp.avx.cpp
-		      build\bvh\bvh_builder_hair.cpp.avx.cpp
-		      build\bvh\bvh_builder_hair_mb.cpp.avx.cpp
-		      build\bvh\bvh_builder_morton.cpp.avx.cpp
-		      build\bvh\bvh_builder_sah.cpp.avx.cpp
-		      build\bvh\bvh_builder_sah_mb.cpp.avx.cpp
-		      build\bvh\bvh_builder_sah_spatial.cpp.avx.cpp
-		      build\bvh\bvh_builder_subdiv.cpp.avx.cpp
-		      build\bvh\bvh_builder_twolevel.cpp.avx.cpp
-		      build\bvh\bvh_collider.cpp.avx.cpp
-		      build\bvh\bvh_intersector1_bvh4.cpp.avx.cpp
-		      build\bvh\bvh_intersector1_bvh8.cpp.avx.cpp
-		      build\bvh\bvh_intersector_hybrid4_bvh4.cpp.avx.cpp
-		      build\bvh\bvh_intersector_hybrid4_bvh8.cpp.avx.cpp
-		      build\bvh\bvh_intersector_hybrid8_bvh4.cpp.avx.cpp
-		      build\bvh\bvh_intersector_hybrid8_bvh8.cpp.avx.cpp
-		      build\bvh\bvh_refit.cpp.avx.cpp
-		      build\bvh\bvh_rotate.cpp.avx.cpp
-		      build\bvh\bvh_statistics.cpp.avx.cpp
-		      build\common\scene_curves.cpp.avx.cpp
-		      build\common\scene_grid_mesh.cpp.avx.cpp
-		      build\common\scene_instance.cpp.avx.cpp
-		      build\common\scene_instance_array.cpp.avx.cpp
-		      build\common\scene_line_segments.cpp.avx.cpp
-		      build\common\scene_points.cpp.avx.cpp
-		      build\common\scene_quad_mesh.cpp.avx.cpp
-		      build\common\scene_subdiv_mesh.cpp.avx.cpp
-		      build\common\scene_triangle_mesh.cpp.avx.cpp
-		      build\common\scene_user_geometry.cpp.avx.cpp
-		      build\geometry\curve_intersector_virtual_4i.cpp.avx.cpp
-		      build\geometry\curve_intersector_virtual_4i_mb.cpp.avx.cpp
-		      build\geometry\curve_intersector_virtual_4v.cpp.avx.cpp
-		      build\geometry\curve_intersector_virtual_8i.cpp.avx.cpp
-		      build\geometry\curve_intersector_virtual_8i_mb.cpp.avx.cpp
-		      build\geometry\curve_intersector_virtual_8v.cpp.avx.cpp
-		      build\geometry\grid_soa.cpp.avx.cpp
-		      build\geometry\instance_array_intersector.cpp.avx.cpp
-		      build\geometry\instance_intersector.cpp.avx.cpp
-		      build\geometry\primitive8.cpp.avx.cpp
-		      build\subdiv\subdivpatch1base_eval.cpp.avx.cpp
-		</ThirdPartySourceFile>
-	</StaticLibrary>
-
-	<StaticLibrary>
-    	<Name>thirdparty_embree_sse42</Name>
+  <StaticLibrary>
+    <Name>thirdparty_embree_sse42</Name>
     <GroupName>thirdparty</GroupName>
-		<SourceRoot>.</SourceRoot>
-		<ExportedIncludeDirectory>include</ExportedIncludeDirectory>
-		<ThirdParty>true</ThirdParty>
-		<PreprocessorDefines>TASKING_INTERNAL;</PreprocessorDefines>
-		<PreprocessorDefines>__SSE__;__SSE2__;__SSE3__;__SSSE3__;__SSE4_1__;__SSE4_2__</PreprocessorDefines>
-		<PreprocessorDefines>EMBREE_TARGET_SSE2;EMBREE_TARGET_SSE42;EMBREE_TARGET_AVX;EMBREE_TARGET_AVX2</PreprocessorDefines>
-		<ThirdPartySourceFile>
-			build\bvh\bvh_intersector1_bvh4.cpp.sse42.cpp
-			build\bvh\bvh_intersector_hybrid4_bvh4.cpp.sse42.cpp
-			build\common\scene_subdiv_mesh.cpp.sse42.cpp
-			build\geometry\curve_intersector_virtual_4i_mb.cpp.sse42.cpp
-			build\geometry\curve_intersector_virtual_4i.cpp.sse42.cpp
-			build\geometry\curve_intersector_virtual_8i.cpp.sse42.cpp
-			build\geometry\curve_intersector_virtual_8i_mb.cpp.sse42.cpp
-			build\geometry\curve_intersector_virtual_8v.cpp.sse42.cpp
-	        build\geometry\curve_intersector_virtual_4v.cpp.sse42.cpp
-			build\geometry\grid_soa.cpp.sse42.cpp
-			build\geometry\instance_array_intersector.cpp.sse42.cpp
-			build\geometry\instance_intersector.cpp.sse42.cpp
-			build\subdiv\subdivpatch1base_eval.cpp.sse42.cpp
-		</ThirdPartySourceFile>
-	</StaticLibrary>
+    <SourceRoot>.</SourceRoot>
+    <ExportedIncludeDirectory>include</ExportedIncludeDirectory>
+    <ThirdParty>true</ThirdParty>
+    <PreprocessorDefines>TASKING_INTERNAL;</PreprocessorDefines>
+    
+    <ThirdPartySourceFile>
+      build\bvh\bvh_intersector1_bvh4.cpp.sse42.cpp
+      build\bvh\bvh_intersector_hybrid4_bvh4.cpp.sse42.cpp
+      build\common\scene_subdiv_mesh.cpp.sse42.cpp
+      build\geometry\curve_intersector_virtual_4i_mb.cpp.sse42.cpp
+      build\geometry\curve_intersector_virtual_4i.cpp.sse42.cpp
+      build\geometry\curve_intersector_virtual_8i.cpp.sse42.cpp
+      build\geometry\curve_intersector_virtual_8i_mb.cpp.sse42.cpp
+      build\geometry\curve_intersector_virtual_8v.cpp.sse42.cpp
+      build\geometry\curve_intersector_virtual_4v.cpp.sse42.cpp
+      build\geometry\grid_soa.cpp.sse42.cpp
+      build\geometry\instance_array_intersector.cpp.sse42.cpp
+      build\geometry\instance_intersector.cpp.sse42.cpp
+      build\subdiv\subdivpatch1base_eval.cpp.sse42.cpp
+    </ThirdPartySourceFile>
+  </StaticLibrary>
 
-	<!-- Dependency>thirdparty_tbb</Dependency -->
+  <!-- Dependency>thirdparty_tbb</Dependency -->
 
 </Module>

@@ -30,32 +30,38 @@ namespace embree
     char Char() const {
       if (ty == TY_CHAR) return c;
       THROW_RUNTIME_ERROR(loc.str()+": character expected");
+      return 0;
     }
 
     int Int() const {
       if (ty == TY_INT) return i;
       THROW_RUNTIME_ERROR(loc.str()+": integer expected");
+      return 0;
     }
 
     float Float(bool cast = true)  const {
       if (ty == TY_FLOAT) return f;
       if (ty == TY_INT && cast) return (float)i;
       THROW_RUNTIME_ERROR(loc.str()+": float expected");
+      return 0;
     }
 
     std::string Identifier() const {
       if (ty == TY_IDENTIFIER) return str;
       THROW_RUNTIME_ERROR(loc.str()+": identifier expected");
+      return "";
     }
 
     std::string String() const {
       if (ty == TY_STRING) return str;
       THROW_RUNTIME_ERROR(loc.str()+": string expected");
+      return "";
     }
 
     std::string Symbol() const {
       if (ty == TY_SYMBOL) return str;
       THROW_RUNTIME_ERROR(loc.str()+": symbol expected");
+      return "";
     }
 
     const ParseLocation& Location() const { return loc; }

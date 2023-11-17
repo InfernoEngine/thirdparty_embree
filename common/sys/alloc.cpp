@@ -64,8 +64,6 @@ namespace embree
 
     assert((align & (align-1)) == 0);
     void* ptr = _mm_malloc(size,align);
-    if (size != 0 && ptr == nullptr)
-      throw std::bad_alloc();
     return ptr;
   }
 
@@ -406,7 +404,9 @@ namespace embree
 
     /* fallback to 4k pages */
     void* ptr = (char*) mmap(0, bytes, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANON, -1, 0);
+#ifdef PLATFORM_HAS_EXCEPTION
     if (ptr == MAP_FAILED) throw std::bad_alloc();
+#endif
     hugepages = false;
 
     /* advise huge page hint for THP */
@@ -422,8 +422,11 @@ namespace embree
     if (bytesNew >= bytesOld)
       return bytesOld;
 
-    if (munmap((char*)ptr+bytesNew,bytesOld-bytesNew) == -1)
+    if (munmap((char*)ptr+bytesNew,bytesOld-bytesNew) == -1) {
+#ifdef PLATFORM_HAS_EXCEPTION
       throw std::bad_alloc();
+#endif
+    }
 
     return bytesNew;
   }
@@ -436,8 +439,11 @@ namespace embree
     /* for hugepages we need to also align the size */
     const size_t pageSize = hugepages ? PAGE_SIZE_2M : PAGE_SIZE_4K;
     bytes = (bytes+pageSize-1) & ~(pageSize-1);
-    if (munmap(ptr,bytes) == -1)
+    if (munmap(ptr,bytes) == -1) {
+#ifdef PLATFORM_HAS_EXCEPTION
       throw std::bad_alloc();
+#endif
+    }
   }
 
   /* hint for transparent huge pages (THP) */

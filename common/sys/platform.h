@@ -212,12 +212,16 @@
 #define UPRINT3(x,y,z) embree_cout_uniform << STRING(x) << " = " << (x) << ", " << STRING(y) << " = " << (y) << ", " << STRING(z) << " = " << (z) << embree_endl
 #define UPRINT4(x,y,z,w) embree_cout_uniform << STRING(x) << " = " << (x) << ", " << STRING(y) << " = " << (y) << ", " << STRING(z) << " = " << (z) << ", " << STRING(w) << " = " << (w) << embree_endl
 
+#ifdef PLATFORM_HAS_EXCEPTION
 #if defined(DEBUG) // only report file and line in debug mode
   #define THROW_RUNTIME_ERROR(str) \
     throw std::runtime_error(std::string(__FILE__) + " (" + toString(__LINE__) + "): " + std::string(str));
 #else
   #define THROW_RUNTIME_ERROR(str) \
     throw std::runtime_error(str);
+#endif
+#else
+  #define THROW_RUNTIME_ERROR(str)
 #endif
 
 #define FATAL(x)   THROW_RUNTIME_ERROR(x)

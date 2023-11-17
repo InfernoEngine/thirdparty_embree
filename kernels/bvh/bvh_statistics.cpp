@@ -150,7 +150,9 @@ namespace embree
       }
     }
     else {
+#if PLATFORM_HAS_EXCEPTIONS
       throw std::runtime_error("not supported node type in bvh_statistics");
+#endif
     }
     return s;
   } 

@@ -13,15 +13,9 @@ namespace embree
   __forceinline bool isIncoherent(RTCRayQueryFlags flags) { return (flags & RTC_RAY_QUERY_FLAG_COHERENT) == RTC_RAY_QUERY_FLAG_INCOHERENT; }
 
 /*! Macros used in the rtcore API implementation */
-#if 0
-#  define RTC_CATCH_BEGIN
-#  define RTC_CATCH_END(device)
-#  define RTC_CATCH_END2(scene)
-#  define RTC_CATCH_END2_FALSE(scene) return false;
-#else
-  
+#ifdef PLATFORM_HAS_EXCEPTIONS
 #define RTC_CATCH_BEGIN try {
-  
+
 #define RTC_CATCH_END(device)                                                \
   } catch (std::bad_alloc&) {                                                   \
     Device::process_error(device,RTC_ERROR_OUT_OF_MEMORY,"out of memory");      \
@@ -67,8 +61,13 @@ namespace embree
     return false;                                                               \
   }
 
+#else
+  #define RTC_CATCH_BEGIN {
+  #define RTC_CATCH_END(device) }
+  #define RTC_CATCH_END2(scene) }
+  #define RTC_CATCH_END2_FALSE(scene) }
 #endif
-  
+
 #define RTC_VERIFY_HANDLE(handle)                               \
   if (handle == nullptr) {                                         \
     throw_RTCError(RTC_ERROR_INVALID_ARGUMENT,"invalid argument"); \
@@ -114,8 +113,12 @@ namespace embree
   #define throw_RTCError(error,str) \
     throw rtcore_error(error,std::string(__FILE__) + " (" + toString(__LINE__) + "): " + std::string(str));
 #else
+#ifdef PLATFORM_HAS_EXCEPTION
   #define throw_RTCError(error,str) \
     throw rtcore_error(error,str);
+#else
+  #define throw_RTCError(error,str) (void)0;
+#endif
 #endif
 
 #define RTC_BUILD_ARGUMENTS_HAS(settings,member) \
