@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <Module>
 
+  <FilterPlatform include="windows">
+
   <Library>
     <Name>thirdparty_embree</Name>
     <GroupName>thirdparty</GroupName>
@@ -11,7 +13,6 @@
     <ThirdPartySharedLocalBuildDefine>RTC_EXPORT_API</ThirdPartySharedLocalBuildDefine>
 
     <Frozen>true</Frozen>
-    <FilterPlatform include="windows">
       <FrozenDeployFiles>
         bin\windows\embree4.dll
         bin\windows\tbb12.dll
@@ -22,7 +23,8 @@
         lib\windows\embree4.lib
         lib\windows\tbb12.lib
       </FrozenLibraryFiles>
-    </FilterPlatform>
   </Library>
-  
+
+  </FilterPlatform>
+
 </Module>
